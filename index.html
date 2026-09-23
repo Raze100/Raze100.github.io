@@ -1,361 +1,463 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rohit Rawat — Software Developer</title>
-<meta name="description" content="Rohit Rawat — Software Developer specializing in scalable backend systems, AI-integrated workflows, and high-performance OTT solutions.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0a0a0f;
-    --bg-elev:#12121a;
-    --card:#15151f;
-    --border:#242433;
-    --text:#e9e9f0;
-    --text-dim:#8f8fa3;
-    --accent:#7c5cff;
-    --accent-2:#00e0b8;
-    --accent-grad:linear-gradient(135deg,#7c5cff 0%,#00e0b8 100%);
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter',system-ui,sans-serif;
-    line-height:1.6;
-    overflow-x:hidden;
-  }
-  h1,h2,h3,.brand{font-family:'Space Grotesk',sans-serif;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rohit Rawat — Software Developer focused on backend systems, payments, event-driven workflows and AI-powered products.">
+  <meta name="theme-color" content="#08090c">
+  <title>Rohit Rawat — Software Developer</title>
 
-  ::selection{background:var(--accent);color:#fff;}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  a{color:inherit;text-decoration:none;}
+  <style>
+    :root{
+      --bg:#08090c;
+      --surface:#0e1015;
+      --surface-2:#12151b;
+      --border:#242832;
+      --text:#f2f4f7;
+      --muted:#969daa;
+      --green:#65f6b0;
+      --blue:#7aa7ff;
+      --orange:#ffb86b;
+      --shadow:0 20px 60px rgba(0,0,0,.28);
+      --radius:18px;
+      --max:1120px;
+    }
 
-  .bg-glow{
-    position:fixed;inset:0;z-index:-1;
-    background:
-      radial-gradient(600px circle at 15% 10%, rgba(124,92,255,0.15), transparent 60%),
-      radial-gradient(500px circle at 85% 30%, rgba(0,224,184,0.10), transparent 60%);
-  }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      background:
+        radial-gradient(900px 500px at 80% -10%, rgba(101,246,176,.08), transparent 65%),
+        radial-gradient(800px 500px at -10% 20%, rgba(122,167,255,.08), transparent 65%),
+        var(--bg);
+      color:var(--text);
+      font-family:Manrope,system-ui,sans-serif;
+      line-height:1.65;
+      overflow-x:hidden;
+    }
+    body:before{
+      content:"";
+      position:fixed; inset:0; pointer-events:none; opacity:.035; z-index:-1;
+      background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),
+                       linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
+      background-size:44px 44px;
+      mask-image:linear-gradient(to bottom,black,transparent 80%);
+    }
+    a{color:inherit;text-decoration:none}
+    ::selection{background:var(--green);color:#06110b}
+    .mono{font-family:"DM Mono",monospace}
 
-  nav{
-    position:sticky;top:0;z-index:100;
-    display:flex;justify-content:space-between;align-items:center;
-    padding:20px 6vw;
-    background:rgba(10,10,15,0.7);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--border);
-  }
-  .brand{font-weight:700;font-size:1.1rem;letter-spacing:-0.02em;}
-  .brand span{background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
-  .nav-links{display:flex;gap:32px;font-size:0.9rem;color:var(--text-dim);}
-  .nav-links a{transition:color .2s;}
-  .nav-links a:hover{color:var(--text);}
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
 
-  section{padding:100px 6vw;max-width:1100px;margin:0 auto;}
+    nav{
+      position:sticky;top:0;z-index:50;
+      border-bottom:1px solid rgba(255,255,255,.07);
+      background:rgba(8,9,12,.78);
+      backdrop-filter:blur(18px);
+    }
+    .nav-inner{
+      min-height:72px;display:flex;align-items:center;justify-content:space-between;
+    }
+    .brand{font-weight:800;letter-spacing:-.04em;font-size:1.05rem}
+    .brand span{color:var(--green)}
+    .nav-links{display:flex;gap:28px;color:var(--muted);font-size:.88rem}
+    .nav-links a{transition:.2s}
+    .nav-links a:hover{color:var(--text)}
+    .nav-cta{
+      border:1px solid var(--border);padding:9px 15px;border-radius:10px;
+      font-size:.82rem;font-weight:700;
+    }
+    .nav-cta:hover{border-color:#3a414e;background:var(--surface)}
 
-  .hero{
-    min-height:88vh;display:flex;flex-direction:column;justify-content:center;
-    padding-top:60px;
-  }
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    color:var(--accent-2);font-size:0.85rem;font-weight:500;
-    letter-spacing:0.04em;text-transform:uppercase;margin-bottom:24px;
-  }
-  .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 12px var(--accent-2);}
-  .hero h1{
-    font-size:clamp(2.4rem,7vw,5rem);font-weight:700;letter-spacing:-0.03em;line-height:1.05;
-    margin-bottom:24px;
-  }
-  .hero h1 .grad{background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
-  .hero p.lede{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--text-dim);max-width:640px;margin-bottom:40px;}
-  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+    .hero{padding:112px 0 92px;display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center}
+    .availability{
+      display:inline-flex;align-items:center;gap:9px;
+      color:var(--green);font-size:.78rem;font-weight:700;
+      letter-spacing:.08em;text-transform:uppercase;margin-bottom:25px;
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 14px rgba(101,246,176,.7)}
+    h1{
+      font-size:clamp(3.2rem,7vw,6.3rem);
+      line-height:.98;letter-spacing:-.07em;font-weight:800;
+      max-width:850px;
+    }
+    h1 em{font-style:normal;color:var(--green)}
+    .hero-copy{
+      max-width:670px;color:var(--muted);font-size:1.08rem;margin:28px 0 32px;
+    }
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:9px;padding:12px 17px;border-radius:11px;
+      font-size:.88rem;font-weight:800;border:1px solid var(--border);transition:.22s;
+    }
+    .btn-primary{background:var(--green);color:#06110b;border-color:var(--green)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(101,246,176,.15)}
+    .btn-secondary:hover{border-color:#454c58;background:var(--surface)}
 
-  .btn{
-    padding:14px 28px;border-radius:100px;font-weight:600;font-size:0.95rem;
-    display:inline-flex;align-items:center;gap:8px;transition:all .25s;border:1px solid transparent;
-  }
-  .btn-primary{background:var(--accent-grad);color:#0a0a0f;}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(124,92,255,0.35);}
-  .btn-ghost{border-color:var(--border);color:var(--text);}
-  .btn-ghost:hover{border-color:var(--accent);background:rgba(124,92,255,0.08);}
+    .terminal{
+      background:rgba(14,16,21,.9);border:1px solid var(--border);
+      border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;
+    }
+    .terminal-top{height:42px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:7px;padding:0 15px}
+    .terminal-dot{width:9px;height:9px;border-radius:50%;background:#3b414c}
+    .terminal-title{margin-left:8px;color:#737a86;font:500 .72rem "DM Mono",monospace}
+    .terminal-body{padding:25px 24px;font:400 .82rem/1.9 "DM Mono",monospace;color:#aeb5c0}
+    .terminal-body .key{color:var(--blue)}
+    .terminal-body .value{color:var(--green)}
+    .terminal-body .comment{color:#656c78}
+    .terminal-body .cursor{display:inline-block;width:7px;height:15px;background:var(--green);vertical-align:-2px;animation:blink 1s infinite}
+    @keyframes blink{50%{opacity:0}}
 
-  .section-head{margin-bottom:48px;}
-  .section-num{color:var(--accent-2);font-family:'Space Grotesk',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.08em;margin-bottom:8px;display:block;}
-  .section-head h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;letter-spacing:-0.02em;}
+    section{padding:92px 0}
+    .section-label{
+      color:var(--green);font:500 .74rem "DM Mono",monospace;
+      letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;
+    }
+    .section-title{font-size:clamp(2rem,4vw,3rem);line-height:1.05;letter-spacing:-.05em;margin-bottom:14px}
+    .section-intro{color:var(--muted);max-width:650px;margin-bottom:42px}
 
-  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:start;}
-  .about-grid p{color:var(--text-dim);font-size:1.05rem;margin-bottom:16px;}
-  .stat-card{
-    background:var(--card);border:1px solid var(--border);border-radius:16px;
-    padding:24px;text-align:center;
-  }
-  .stats-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-  .stat-num{font-family:'Space Grotesk';font-size:2rem;font-weight:700;background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
-  .stat-label{color:var(--text-dim);font-size:0.85rem;margin-top:4px;}
+    .about-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:70px}
+    .about-text p{color:var(--muted);font-size:1rem;margin-bottom:18px}
+    .about-text strong{color:var(--text)}
+    .quick-facts{display:grid;gap:12px}
+    .fact{
+      border:1px solid var(--border);background:rgba(14,16,21,.7);border-radius:14px;padding:17px 18px
+    }
+    .fact-label{font:500 .68rem "DM Mono",monospace;color:#6f7682;text-transform:uppercase;letter-spacing:.08em}
+    .fact-value{font-weight:700;margin-top:3px}
 
-  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
-  .skill-card{
-    background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;
-    transition:border-color .25s, transform .25s;
-  }
-  .skill-card:hover{border-color:var(--accent);transform:translateY(-4px);}
-  .skill-card h3{font-size:1rem;margin-bottom:12px;color:var(--accent-2);}
-  .skill-tags{display:flex;flex-wrap:wrap;gap:8px;}
-  .tag{
-    font-size:0.8rem;padding:6px 12px;border-radius:100px;
-    background:var(--bg-elev);border:1px solid var(--border);color:var(--text-dim);
-  }
+    .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .skill{
+      background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:22px;
+      transition:.2s;
+    }
+    .skill:hover{transform:translateY(-3px);border-color:#39414d}
+    .skill h3{font-size:.95rem;margin-bottom:15px}
+    .tags{display:flex;flex-wrap:wrap;gap:7px}
+    .tag{
+      padding:6px 9px;border:1px solid #272d37;border-radius:8px;
+      color:#aeb5c0;background:#0b0d11;font:400 .7rem "DM Mono",monospace
+    }
 
-  .timeline{position:relative;padding-left:32px;}
-  .timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--border);}
-  .job{position:relative;margin-bottom:56px;}
-  .job::before{
-    content:"";position:absolute;left:-32px;top:6px;width:14px;height:14px;border-radius:50%;
-    background:var(--bg);border:2px solid var(--accent-2);
-  }
-  .job-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:6px;}
-  .job-title{font-size:1.25rem;font-weight:700;font-family:'Space Grotesk';}
-  .job-meta{color:var(--text-dim);font-size:0.9rem;}
-  .job-role{color:var(--accent-2);font-weight:600;font-size:0.95rem;margin-bottom:16px;}
-  .job ul{list-style:none;}
-  .job li{position:relative;padding-left:20px;margin-bottom:12px;color:var(--text-dim);font-size:0.97rem;}
-  .job li::before{content:"▸";position:absolute;left:0;color:var(--accent);}
-  .job li b{color:var(--text);font-weight:600;}
+    .timeline{position:relative}
+    .timeline:before{
+      content:"";position:absolute;left:9px;top:10px;bottom:20px;width:1px;background:var(--border)
+    }
+    .job{position:relative;padding-left:42px;margin-bottom:62px}
+    .job:before{
+      content:"";position:absolute;left:3px;top:8px;width:13px;height:13px;border-radius:50%;
+      background:var(--bg);border:2px solid var(--green);box-shadow:0 0 0 5px rgba(101,246,176,.05)
+    }
+    .job-header{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:18px}
+    .company{font-size:1.45rem;letter-spacing:-.03em;font-weight:800}
+    .role{color:var(--green);font-size:.86rem;font-weight:700;margin-top:2px}
+    .date{color:#707782;font:400 .7rem "DM Mono",monospace;text-align:right;white-space:nowrap}
+    .job ul{list-style:none;display:grid;gap:11px}
+    .job li{color:var(--muted);font-size:.91rem;padding-left:18px;position:relative}
+    .job li:before{content:"→";position:absolute;left:0;color:var(--green)}
+    .job li strong{color:#e2e6eb}
 
-  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;}
-  .project-card{
-    background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;
-    transition:transform .25s, border-color .25s;
-  }
-  .project-card:hover{transform:translateY(-6px);border-color:var(--accent);}
-  .project-card h3{font-size:1.3rem;margin-bottom:8px;}
-  .project-stack{color:var(--accent-2);font-size:0.85rem;font-weight:500;margin-bottom:16px;}
-  .project-card p{color:var(--text-dim);font-size:0.95rem;}
+    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .project{
+      background:var(--surface);border:1px solid var(--border);border-radius:17px;padding:27px;
+      transition:.22s;position:relative;overflow:hidden
+    }
+    .project:hover{transform:translateY(-4px);border-color:#3a424e;box-shadow:var(--shadow)}
+    .project:after{
+      content:"";position:absolute;right:-60px;top:-70px;width:170px;height:170px;border-radius:50%;
+      background:rgba(101,246,176,.05)
+    }
+    .project h3{font-size:1.2rem;letter-spacing:-.025em}
+    .project-stack{color:var(--green);font:500 .69rem "DM Mono",monospace;margin:9px 0 15px}
+    .project p{color:var(--muted);font-size:.88rem}
 
-  .edu-card{
-    background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;
-  }
-  .edu-card h3{font-size:1.1rem;}
-  .edu-card .job-meta{text-align:right;}
-  .edu-degree{color:var(--text-dim);font-size:0.95rem;margin-top:4px;}
+    .education{
+      border:1px solid var(--border);background:var(--surface);border-radius:17px;
+      padding:25px;display:flex;justify-content:space-between;gap:20px
+    }
+    .education h3{font-size:1rem}
+    .degree{color:var(--muted);font-size:.87rem;margin-top:5px}
+    .edu-meta{text-align:right;color:#7b828d;font:400 .7rem "DM Mono",monospace;white-space:nowrap}
 
-  footer{
-    text-align:center;padding:80px 6vw 60px;
-    border-top:1px solid var(--border);margin-top:40px;
-  }
-  footer h2{font-size:clamp(1.8rem,5vw,2.8rem);margin-bottom:16px;}
-  footer p{color:var(--text-dim);margin-bottom:32px;}
-  .contact-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;}
-  .copyright{color:var(--text-dim);font-size:0.85rem;}
+    .contact{
+      margin-top:30px;border-top:1px solid var(--border);padding:100px 0 65px;text-align:center
+    }
+    .contact h2{font-size:clamp(2.5rem,6vw,5rem);line-height:.98;letter-spacing:-.07em}
+    .contact h2 span{color:var(--green)}
+    .contact p{color:var(--muted);margin:22px auto 30px;max-width:540px}
+    .contact-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+    footer{color:#626975;text-align:center;font:400 .68rem "DM Mono",monospace;padding-bottom:32px}
 
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
-  .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+    .reveal.visible{opacity:1;transform:none}
 
-  @media (max-width:800px){
-    .about-grid{grid-template-columns:1fr;}
-    .nav-links{display:none;}
-    section{padding:70px 6vw;}
-  }
-</style>
+    @media(max-width:850px){
+      .nav-links{display:none}
+      .hero{grid-template-columns:1fr;padding-top:80px;gap:45px}
+      .about-grid{grid-template-columns:1fr;gap:35px}
+      .skills{grid-template-columns:repeat(2,1fr)}
+      .project-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      .container{width:min(var(--max),calc(100% - 28px))}
+      .nav-inner{min-height:64px}
+      .nav-cta{display:none}
+      .hero{padding:70px 0}
+      h1{font-size:clamp(3rem,16vw,4.4rem)}
+      section{padding:70px 0}
+      .skills{grid-template-columns:1fr}
+      .job{padding-left:31px}
+      .job:before{left:0}
+      .timeline:before{left:6px}
+      .job-header{display:block}
+      .date{text-align:left;margin-top:5px}
+      .education{display:block}
+      .edu-meta{text-align:left;margin-top:12px}
+      .terminal-body{font-size:.72rem;padding:20px 17px}
+    }
+  </style>
 </head>
+
 <body>
-<div class="bg-glow"></div>
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="#top">rohit<span>.dev</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+      </div>
+      <a class="nav-cta" href="#contact">Let's talk ↗</a>
+    </div>
+  </nav>
 
-<nav>
-  <div class="brand">rohit<span>.dev</span></div>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#education">Education</a>
-  </div>
-  <a href="#contact" class="btn btn-ghost" style="padding:10px 20px;font-size:0.85rem;">Contact</a>
-</nav>
-
-<section class="hero">
-  <span class="eyebrow">Open to opportunities</span>
-  <h1>Rohit Rawat<br>builds <span class="grad">scalable backend systems</span> &amp; AI-powered products.</h1>
-  <p class="lede">Software Developer with 2+ years architecting asynchronous backend architectures for 100k+ users, AI-integrated workflows, and high-performance OTT solutions — using MERN, Angular, and AWS.</p>
-  <div class="hero-actions">
-    <a href="#contact" class="btn btn-primary">Get in touch</a>
-    <a href="#experience" class="btn btn-ghost">View experience</a>
-    <a href="https://github.com/Raze100" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
-  </div>
-</section>
-
-<section id="about">
-  <div class="section-head reveal">
-    <span class="section-num">01 · ABOUT</span>
-    <h2>Professional Summary</h2>
-  </div>
-  <div class="about-grid reveal">
-    <div>
-      <p>Results-driven Software Developer with over 2 years of experience in architecting scalable backend systems, AI-integrated workflows, and high-performance OTT solutions.</p>
-      <p>Expertise in building asynchronous architectures for 100k+ users and optimizing data-heavy applications, with a strong leadership background managing small teams through the full SDLC using MERN, Angular, and AWS cloud-native services.</p>
-    </div>
-    <div class="stats-row">
-      <div class="stat-card"><div class="stat-num">2+</div><div class="stat-label">Years Experience</div></div>
-      <div class="stat-card"><div class="stat-num">100k+</div><div class="stat-label">Users Served</div></div>
-      <div class="stat-card"><div class="stat-num">40%</div><div class="stat-label">API Latency Cut</div></div>
-      <div class="stat-card"><div class="stat-num">99.9%</div><div class="stat-label">Delivery Reliability</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="section-head reveal">
-    <span class="section-num">02 · SKILLS</span>
-    <h2>Technical Skills</h2>
-  </div>
-  <div class="skills-grid reveal">
-    <div class="skill-card">
-      <h3>Languages</h3>
-      <div class="skill-tags">
-        <span class="tag">JavaScript (ES6+)</span><span class="tag">TypeScript</span><span class="tag">Python</span><span class="tag">C++</span><span class="tag">HTML5</span><span class="tag">CSS3/SASS</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <h3>Backend &amp; Cloud</h3>
-      <div class="skill-tags">
-        <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">Microservices</span><span class="tag">RESTful APIs</span><span class="tag">Socket.io</span><span class="tag">AWS (SQS, S3, Transcribe)</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <h3>Frontend Development</h3>
-      <div class="skill-tags">
-        <span class="tag">React.js</span><span class="tag">Next.js</span><span class="tag">Angular (MAYA CMS)</span><span class="tag">React Native</span><span class="tag">Tailwind CSS</span><span class="tag">Video.js</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <h3>Databases &amp; Caching</h3>
-      <div class="skill-tags">
-        <span class="tag">MongoDB (Aggregations)</span><span class="tag">MySQL (Sequelize ORM)</span><span class="tag">Redis</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <h3>DevOps &amp; Infrastructure</h3>
-      <div class="skill-tags">
-        <span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Jenkins</span><span class="tag">RabbitMQ</span><span class="tag">FFmpeg</span><span class="tag">Git/GitHub</span><span class="tag">CI/CD</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <h3>Specialized Integration</h3>
-      <div class="skill-tags">
-        <span class="tag">OpenAI API</span><span class="tag">Anthropic API</span><span class="tag">OneSignal</span><span class="tag">OAuth</span><span class="tag">Payment Gateways</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="section-head reveal">
-    <span class="section-num">03 · EXPERIENCE</span>
-    <h2>Where I've Worked</h2>
-  </div>
-  <div class="timeline reveal">
-    <div class="job">
-      <div class="job-head">
-        <div class="job-title">PickMyWork</div>
-        <div class="job-meta">March 2026 – Present · Gurugram, India</div>
-      </div>
-      <div class="job-role">Software Developer</div>
-      <ul>
-        <li><b>Automated Refund Processing:</b> Built the AutoRefund Job to automate refunds for eligible and failed orders across mobile recharge transactions, using Node.js, Express.js, MySQL, and Kue.</li>
-        <li><b>Payment &amp; Subscription Workflows:</b> Implemented and maintained Razorpay-based subscription payment flows, including recurring payments for Gold SIP, with payment lifecycle state modeling in MySQL.</li>
-        <li><b>AI-Powered Slack Data Assistant:</b> Contributed to an internal Slack Bot letting employees query organizational data in natural language, integrating Anthropic APIs to interpret queries and generate restricted SQL.</li>
-        <li><b>Domain-Specific AI Guardrails:</b> Implemented structured prompts, organizational terminology, and keyword-based rules to improve query understanding and restrict unauthorized data responses.</li>
-        <li><b>Partner Level Management:</b> Contributed to the PickMyWork Dashboard managing partner classifications (Bronze/Silver/Gold/Platinum) and level-based bonuses and incentives.</li>
-        <li><b>Event-Driven Systems:</b> Worked with Kafka for asynchronous event processing and Slack APIs for internal alerting and operational logging across critical workflows.</li>
-        <li><b>Backend APIs &amp; Cloud:</b> Developed and tested REST APIs with Node.js/Express.js, using Passport.js, AWS EC2, and AWS S3 for auth, testing, and infrastructure.</li>
-      </ul>
-    </div>
-    <div class="job">
-      <div class="job-head">
-        <div class="job-title">MOGI I/O <span style="color:var(--text-dim);font-weight:400;font-size:0.9rem;">(OTT Provider)</span></div>
-        <div class="job-meta">Dec 2023 – March 2026 · New Delhi, India</div>
-      </div>
-      <div class="job-role">Software Developer</div>
-      <ul>
-        <li><b>Scalable Messaging Infrastructure:</b> Designed and deployed a push-notification microservice supporting 100k+ concurrent subscribers via OneSignal and React Native, achieving 99.9% deliverability.</li>
-        <li><b>Revenue &amp; Video Analytics:</b> Engineered a production-grade analytics suite with Node/Express and AWS SQS, optimizing multi-database joins via MongoDB Aggregations and Redis — cutting API response times by 40%.</li>
-        <li><b>Real-Time Security Enforcement:</b> Built a User Device Limit feature using Socket.io to enforce concurrent session caps, reducing unauthorized credential sharing by an estimated 25%.</li>
-        <li><b>AI Video Content Platform:</b> Led a team of two to build a generative AI "Long Video to Shorts" tool using Node.js, Next.js, and Python, integrating OpenAI and FFmpeg to cut manual editing time by over 80%.</li>
-        <li><b>Enterprise CMS Engineering (MAYA):</b> Developed complex Angular UI modules for Live Stream and EPG dashboards with custom HTTP Interceptors and DayPilot Schedulers for real-time data at scale.</li>
-        <li><b>Full-Stack Product Management:</b> Maintained SUPERCMS (Next.js), integrating AWS S3 and Transcribe for media automation, and Video.js for deep engagement metrics.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="section-head reveal">
-    <span class="section-num">04 · PROJECTS</span>
-    <h2>Technical Projects</h2>
-  </div>
-  <div class="projects-grid reveal">
-    <div class="project-card">
-      <h3>Play Pause</h3>
-      <div class="project-stack">Next.js · TypeScript · Socket.io · Docker</div>
-      <p>A cross-platform Progressive Web App for multimedia consumption, featuring a real-time "Watch Together" synchronization tool, built on containerized microservices with 99% availability for high-traffic media streams.</p>
-    </div>
-    <div class="project-card">
-      <h3>Airline Management System</h3>
-      <div class="project-stack">Node.js · MySQL · RabbitMQ · Microservices</div>
-      <p>A backend suite of four microservices (Booking, Auth, Search, Reminder) using RabbitMQ for reliable messaging, with a schema optimized via Sequelize ORM for high-concurrency booking requests.</p>
-    </div>
-  </div>
-</section>
-
-<section id="education">
-  <div class="section-head reveal">
-    <span class="section-num">05 · EDUCATION</span>
-    <h2>Education</h2>
-  </div>
-  <div class="reveal">
-    <div class="edu-card">
+  <main id="top">
+    <div class="container hero">
       <div>
-        <h3>SRM University, Delhi-NCR, Sonepat</h3>
-        <div class="edu-degree">Bachelor of Technology in Computer Science and Engineering</div>
+        <div class="availability"><span class="dot"></span> Available for opportunities</div>
+        <h1>Building <em>backend systems</em> that do useful work.</h1>
+        <p class="hero-copy">
+          Software Developer with 2+ years of experience across backend engineering, payments,
+          event-driven workflows, AI integrations and OTT products. I enjoy turning messy business
+          problems into reliable software.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#experience">View my work ↓</a>
+          <a class="btn btn-secondary" href="mailto:rohitmails084@gmail.com">Email me ↗</a>
+          <a class="btn btn-secondary" href="https://github.com/Raze100" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
       </div>
-      <div class="job-meta">2019 – 2023<br>CGPA: 8.27</div>
-    </div>
-    <div class="edu-card">
-      <div>
-        <h3>DAV Public School, Delhi</h3>
-        <div class="edu-degree">Intermediate</div>
+
+      <div class="terminal" aria-label="Developer profile">
+        <div class="terminal-top">
+          <span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span>
+          <span class="terminal-title">rohit@dev ~ /profile</span>
+        </div>
+        <div class="terminal-body">
+          <div><span class="comment">// currently looking for</span></div>
+          <div>{</div>
+          <div>&nbsp;&nbsp;<span class="key">"role"</span>: <span class="value">"SDE / Backend Engineer"</span>,</div>
+          <div>&nbsp;&nbsp;<span class="key">"stack"</span>: <span class="value">"Node.js + SQL + AWS"</span>,</div>
+          <div>&nbsp;&nbsp;<span class="key">"interests"</span>: <span class="value">["systems", "AI", "payments"]</span>,</div>
+          <div>&nbsp;&nbsp;<span class="key">"location"</span>: <span class="value">"Delhi NCR / Open to relocate"</span>,</div>
+          <div>&nbsp;&nbsp;<span class="key">"status"</span>: <span class="value">"open_to_work"</span></div>
+          <div>}<span class="cursor"></span></div>
+        </div>
       </div>
-      <div class="job-meta">2018<br>80%</div>
     </div>
-  </div>
-</section>
 
-<footer id="contact">
-  <h2>Let's build something<br><span class="grad" style="background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;color:transparent;">great together.</span></h2>
-  <p>New Delhi, India — open to new roles and opportunities.</p>
-  <div class="contact-links">
-    <a href="mailto:rohitmails084@gmail.com" class="btn btn-primary">rohitmails084@gmail.com</a>
-    <a href="tel:+919560938315" class="btn btn-ghost">+91-9560938315</a>
-    <a href="https://linkedin.com/in/rohit-rawat" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn ↗</a>
-    <a href="https://github.com/Raze100" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
-  </div>
-  <div class="copyright">© 2026 Rohit Rawat. Built with HTML, CSS &amp; a little JS.</div>
-</footer>
+    <section id="about">
+      <div class="container reveal">
+        <div class="section-label">01 · About</div>
+        <h2 class="section-title">A developer who likes understanding the system behind the feature.</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              My recent work has been heavily backend-focused — from <strong>automated refunds and payment
+              subscriptions</strong> to asynchronous jobs, Kafka workflows and internal data tools.
+            </p>
+            <p>
+              At PickMyWork, I worked on payment and partner workflows for a gig-economy platform and
+              contributed to an internal AI-powered Slack assistant that translates employee questions
+              into constrained SQL-backed data queries.
+            </p>
+            <p>
+              Before that, at MOGI I worked on OTT products, analytics, real-time session controls,
+              push infrastructure and AI-assisted video workflows.
+            </p>
+          </div>
+          <div class="quick-facts">
+            <div class="fact"><div class="fact-label">Experience</div><div class="fact-value">2+ years</div></div>
+            <div class="fact"><div class="fact-label">Primary focus</div><div class="fact-value">Backend / Full Stack</div></div>
+            <div class="fact"><div class="fact-label">Core stack</div><div class="fact-value">Node.js · SQL · AWS</div></div>
+            <div class="fact"><div class="fact-label">Education</div><div class="fact-value">B.Tech CSE · CGPA 8.27</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
+    <section id="skills">
+      <div class="container reveal">
+        <div class="section-label">02 · Toolkit</div>
+        <h2 class="section-title">Technologies I work with.</h2>
+        <p class="section-intro">A practical stack built through production work rather than just tutorials.</p>
+
+        <div class="skills">
+          <div class="skill">
+            <h3>Backend</h3>
+            <div class="tags">
+              <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">REST APIs</span>
+              <span class="tag">Microservices</span><span class="tag">Socket.io</span><span class="tag">Passport.js</span>
+            </div>
+          </div>
+          <div class="skill">
+            <h3>Data & Messaging</h3>
+            <div class="tags">
+              <span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">Redis</span>
+              <span class="tag">Kafka</span><span class="tag">Kue</span><span class="tag">RabbitMQ</span><span class="tag">AWS SQS</span>
+            </div>
+          </div>
+          <div class="skill">
+            <h3>Cloud & DevOps</h3>
+            <div class="tags">
+              <span class="tag">AWS EC2</span><span class="tag">AWS S3</span><span class="tag">Docker</span>
+              <span class="tag">Kubernetes</span><span class="tag">Jenkins</span><span class="tag">CI/CD</span><span class="tag">Git</span>
+            </div>
+          </div>
+          <div class="skill">
+            <h3>Frontend</h3>
+            <div class="tags">
+              <span class="tag">React.js</span><span class="tag">Next.js</span><span class="tag">Angular</span>
+              <span class="tag">React Native</span><span class="tag">TypeScript</span><span class="tag">Tailwind</span>
+            </div>
+          </div>
+          <div class="skill">
+            <h3>AI & Integrations</h3>
+            <div class="tags">
+              <span class="tag">Anthropic API</span><span class="tag">OpenAI API</span><span class="tag">Razorpay</span>
+              <span class="tag">Slack APIs</span><span class="tag">OneSignal</span><span class="tag">FFmpeg</span>
+            </div>
+          </div>
+          <div class="skill">
+            <h3>Development</h3>
+            <div class="tags">
+              <span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">C++</span>
+              <span class="tag">Sequelize</span><span class="tag">Postman</span><span class="tag">SQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container reveal">
+        <div class="section-label">03 · Experience</div>
+        <h2 class="section-title">Production work.</h2>
+        <p class="section-intro">A look at the systems and product areas I've contributed to.</p>
+
+        <div class="timeline">
+          <article class="job">
+            <div class="job-header">
+              <div>
+                <div class="company">PickMyWork</div>
+                <div class="role">Software Developer</div>
+              </div>
+              <div class="date">MAR 2026 — SEP 2026<br>GURUGRAM, INDIA</div>
+            </div>
+            <ul>
+              <li><strong>Automated Refund Processing:</strong> Worked on the AutoRefund Job to automate refunds for eligible and failed orders, primarily across mobile recharge transactions, using Node.js, Express.js, MySQL and Kue.</li>
+              <li><strong>Payment & Subscription Workflows:</strong> Worked with Razorpay APIs on subscription-based payment flows, including recurring payment workflows for Gold SIP, with payment lifecycle state handling in MySQL.</li>
+              <li><strong>AI-Powered Slack Data Assistant:</strong> Contributed to an internal Slack Bot allowing employees to query organizational data using natural language, integrating Anthropic APIs to interpret queries and generate constrained SQL.</li>
+              <li><strong>AI Guardrails & Domain Context:</strong> Used structured prompts, organizational terminology, semantic context and keyword-based rules to improve intent recognition and keep responses limited to relevant data.</li>
+              <li><strong>Partner Platform:</strong> Contributed to the PickMyWork Dashboard for Bronze, Silver, Gold and Platinum partner levels, including level-based bonuses, incentives and benefits.</li>
+              <li><strong>Event-Driven Operations:</strong> Worked with Kafka for asynchronous event processing and Slack APIs for internal alerts, communications and application logging.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-header">
+              <div>
+                <div class="company">MOGI I/O <span style="font-weight:500;color:#777f8b;font-size:.82rem">(OTT Provider)</span></div>
+                <div class="role">Software Developer</div>
+              </div>
+              <div class="date">DEC 2023 — MAR 2026<br>NEW DELHI, INDIA</div>
+            </div>
+            <ul>
+              <li><strong>Scalable Messaging Infrastructure:</strong> Designed and deployed a push-notification microservice supporting 100k+ concurrent subscribers via OneSignal and React Native, achieving 99.9% deliverability.</li>
+              <li><strong>Revenue & Video Analytics:</strong> Engineered analytics workflows using Node/Express and AWS SQS, optimizing MongoDB Aggregations and Redis-backed data access to reduce API response times by 40%.</li>
+              <li><strong>Real-Time Security Enforcement:</strong> Built a User Device Limit feature using Socket.io to enforce concurrent session caps and trigger real-time logout for exceeding devices.</li>
+              <li><strong>AI Video Content Platform:</strong> Led a team of two to build a generative AI “Long Video to Shorts” tool using Node.js, Next.js and Python, integrating OpenAI and FFmpeg.</li>
+              <li><strong>Enterprise CMS Engineering:</strong> Developed Angular modules for Live Stream and EPG dashboards using custom HTTP Interceptors and DayPilot Schedulers.</li>
+              <li><strong>Media Workflow Platform:</strong> Maintained SUPERCMS using Next.js, AWS S3 and Transcribe, with Video.js-based engagement metrics.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container reveal">
+        <div class="section-label">04 · Projects</div>
+        <h2 class="section-title">Things I've built.</h2>
+        <p class="section-intro">Side projects where I could experiment with architecture, real-time systems and backend design.</p>
+
+        <div class="project-grid">
+          <article class="project">
+            <h3>Play Pause</h3>
+            <div class="project-stack">NEXT.JS · TYPESCRIPT · SOCKET.IO · DOCKER</div>
+            <p>A cross-platform PWA for multimedia consumption with a real-time “Watch Together” synchronization feature and a containerized backend.</p>
+          </article>
+          <article class="project">
+            <h3>Airline Management System</h3>
+            <div class="project-stack">NODE.JS · MYSQL · RABBITMQ · MICROSERVICES</div>
+            <p>A backend suite of Booking, Auth, Search and Reminder services using RabbitMQ for reliable messaging and Sequelize for relational data modelling.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container reveal">
+        <div class="section-label">05 · Education</div>
+        <h2 class="section-title">Education.</h2>
+        <div class="education">
+          <div>
+            <h3>SRM University, Delhi-NCR, Sonepat</h3>
+            <div class="degree">Bachelor of Technology in Computer Science and Engineering</div>
+          </div>
+          <div class="edu-meta">2019 — 2023<br>CGPA 8.27</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container reveal">
+        <h2>Let's build something<br><span>useful.</span></h2>
+        <p>I'm currently exploring Software Engineer, Backend and Full Stack opportunities. If you're building something interesting, I'd love to talk.</p>
+        <div class="contact-links">
+          <a class="btn btn-primary" href="mailto:rohitmails084@gmail.com">rohitmails084@gmail.com ↗</a>
+          <a class="btn btn-secondary" href="https://linkedin.com/in/rohitrawat17" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="btn btn-secondary" href="https://github.com/Raze100" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Rohit Rawat · Built with HTML, CSS & JavaScript</footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
